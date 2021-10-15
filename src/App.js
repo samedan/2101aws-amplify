@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { API, graphqlOperation } from "aws-amplify";
+import { API, Auth, graphqlOperation } from "aws-amplify";
 import { createNote, deleteNote, updateNote } from "./graphql/mutations";
 import { listNotes } from "./graphql/queries";
+import { onCreateNote } from "./graphql/subscriptions";
 import { withAuthenticator } from "aws-amplify-react";
 
 class App extends Component {
@@ -11,10 +12,23 @@ class App extends Component {
     notes: [],
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.getNotes();
+    API.graphql(
+      graphqlOperation(onCreateNote, {
+        owner: Auth.currentUserInfo().username,
+      })
+    ).subscribe({
+      next: (noteData) => {
+        console.log(noteData);
+      },
+    });
+  }
+
+  getNotes = async () => {
     const result = await API.graphql(graphqlOperation(listNotes));
     this.setState({ notes: result.data.listNotes.items });
-  }
+  };
 
   handleChangeNote = (event) => {
     this.setState({ note: event.target.value });
