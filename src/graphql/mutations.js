@@ -9,8 +9,6 @@ export const createNote = /* GraphQL */ `
     createNote(input: $input, condition: $condition) {
       id
       note
-      createdAt
-      updatedAt
     }
   }
 `;

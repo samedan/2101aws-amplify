@@ -2,3 +2,13 @@ https://10minutemail.com/
 
 https://tachyons.io/
 
+Github: 
+https://github.com/samedan/2101aws-amplify
+> git push origin main
+
+Queries GraphQL: 
+Section 4 > 12
+
+AWS Amplify Console:
+https://eu-west-1.console.aws.amazon.com/amplify/home?region=eu-west-1#/dnqszb6xmmspg/YmFja2VuZA/dev
+
