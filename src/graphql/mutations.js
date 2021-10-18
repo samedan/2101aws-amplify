@@ -9,6 +9,9 @@ export const createNote = /* GraphQL */ `
     createNote(input: $input, condition: $condition) {
       id
       note
+      createdAt
+      updatedAt
+      owner
     }
   }
 `;
@@ -22,6 +25,7 @@ export const updateNote = /* GraphQL */ `
       note
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -35,6 +39,7 @@ export const deleteNote = /* GraphQL */ `
       note
       createdAt
       updatedAt
+      owner
     }
   }
 `;
